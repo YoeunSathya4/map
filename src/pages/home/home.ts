@@ -30,7 +30,7 @@ export class HomePage {
       
       this.username = localStorage.getItem('username');
       if(this.username != null){
-        this.watchGeo(this.username);
+        this.watchGeo();
       }else{
         this.presentPrompt(); 
       }
@@ -67,7 +67,7 @@ export class HomePage {
           handler: data => {
            if(data.username != ''){
             localStorage.setItem('username', data.username); 
-            this.watchGeo(data.username);
+            this.watchGeo();
            }
           }
         }
@@ -77,13 +77,13 @@ export class HomePage {
     alert.present();
   }
 
-  watchGeo(username:string = ''){
+  watchGeo(){
     const watch = this.geolocation.watchPosition().subscribe(pos => {
       var data = {
         lat: pos.coords.latitude, 
         lon: pos.coords.longitude
       }
-
+      const username = localStorage.getItem('username');
       this.afs.collection('users').doc(username).update(data); 
 
    });
