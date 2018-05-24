@@ -86,7 +86,7 @@ export class HomePage {
 
       this.afs.collection('users').doc(username).update(data); 
 
-  });
+   });
   }
 
 
