@@ -10,7 +10,7 @@ export class AboutPage {
 
   constructor(public navCtrl: NavController, private platform: Platform, private alertCtrl: AlertController) {
     platform.ready().then(() => {
-      this.presentPrompt();
+      //this.presentPrompt();
     }); 
   }
 
